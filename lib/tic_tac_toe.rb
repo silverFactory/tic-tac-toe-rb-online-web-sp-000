@@ -108,11 +108,14 @@ end
 
 # Define your play method below
 def play(board)
-  round = 1
-  while round <=9 do
-    turn(board)
-    round += 1
-  end
+ until over?(board)
+  turn(board)
+ end
+ if won?(board)
+   puts "Congratulations #{current_player(board)}"
+ elsif draw?(board)
+   puts "Draw!"
+ end
 end
 
 def turn_count(board)
